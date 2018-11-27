@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+
+    "name": "豆瓣电影资源",
+    "description": "丰富豆瓣电影资源列表",
+    "version": "0.1",
+    "icons": {
+        "32": "favicon-32.png",
+        "64": "favicon-64.png",
+        "128": "favicon-128.png",
+    },
+
+    "content_scripts": [{
+        "matches": ["*://movie.douban.com/subject/*"],
+        "js": ["core.js"],
+        "run_at": "document_end"
+    }],
+    "permissions": [
+    ],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    }
+}
