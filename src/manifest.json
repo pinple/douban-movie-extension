@@ -1,9 +1,10 @@
 {
     "manifest_version": 2,
 
-    "name": "豆瓣电影资源",
-    "description": "丰富豆瓣电影资源列表",
+    "name": "豆瓣电影传送门",
+    "description": "丰富豆瓣电影播放源列表",
     "version": "0.1",
+    "homepage_url": "https://github.com/Neulana/douban-movie-extension",
     "icons": {
         "32": "favicon-32.png",
         "64": "favicon-64.png",
