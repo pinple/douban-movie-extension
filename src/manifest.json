@@ -8,7 +8,7 @@
     "icons": {
         "32": "favicon-32.png",
         "64": "favicon-64.png",
-        "128": "favicon-128.png",
+        "128": "favicon-128.png"
     },
 
     "content_scripts": [{
@@ -17,6 +17,7 @@
         "run_at": "document_end"
     }],
     "permissions": [
+        "https://neets.cc/*"
     ],
     "background": {
         "scripts": ["background.js"],
