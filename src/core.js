@@ -12,6 +12,8 @@
             });
             port.onMessage.addListener(function (msg) {
                 var url = msg.url;
+                var num = url.search("&key=");
+                var searchUrl = 'https://neets.cc/search?page-size=6&type=2&key=' + url.substring(num+5);
                 var neetLinks = msg.neetLinks;
                 if (!msg.success) {
                     dict[url].found = false;
@@ -21,9 +23,7 @@
                 var task;
                 while (dict[url].tasks.length > 0) {
                     task = dict[url].tasks.pop();
-                    console.log('url:====' + url);
-                    console.log('neetLinks:====' + neetLinks);
-                    var panel = getPanel(url, neetLinks);
+                    var panel = getPanel(searchUrl, neetLinks);
                     task.parentTag.insertBefore(panel, task.parentTag.childNodes[0]);
                 }
             });
@@ -80,14 +80,22 @@
             neetsLi.appendChild(neetsMovie);
             neetsLi.appendChild(neetsSpan);
             neetsUl.appendChild(neetsLi);
-            neetsDiv.appendChild(neetsUl);
         }
+        var neetsLiMore = document.createElement('li');
+        var neetsMovieMore = document.createElement('a');
+        neetsMovieMore.setAttribute('href', rawUrl);
+        neetsMovieMore.setAttribute('target', '_blank');
+        neetsMovieMore.setAttribute('class', 'playBtn');
+        neetsMovieMore.innerHTML = '发现更多>>>';
+        neetsLiMore.appendChild(neetsMovieMore);
+        neetsUl.appendChild(neetsLiMore);
+        neetsDiv.appendChild(neetsUl);
         return neetsDiv;
     }
 
     function runDouban() {
         var h1 = document.getElementsByTagName('h1')[0];
-        var movieName = h1.firstElementChild.innerText;
+        var movieName = h1.firstElementChild.innerText.split(' ')[0];
         var aside = document.getElementsByClassName('aside');
         if (aside) {
             search(movieName, aside[0]);

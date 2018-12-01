@@ -1,0 +1,22 @@
+{
+  "name": "douban-movie-extension",
+  "version": "1.0.0",
+  "description": "妈妈再也不会担心我找不到资源了~",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neulana/douban-movie-extension.git"
+  },
+  "author": "Neulana",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Neulana/douban-movie-extension/issues"
+  },
+  "homepage": "https://github.com/Neulana/douban-movie-extension#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-watch": "^4.3.10",
+    "pump": "^1.0.1"
+  }
+}
