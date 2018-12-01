@@ -13,9 +13,9 @@
   },
   "homepage": "https://github.com/Neulana/douban-movie-extension#readme",
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-uglify": "^2.0.0",
+    "gulp": "^4.0.0",
     "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^2.0.0",
     "gulp-watch": "^4.3.10",
     "pump": "^1.0.1"
   }
