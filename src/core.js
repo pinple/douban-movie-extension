@@ -2,7 +2,7 @@
 
     var port = null;
     var dict = {};
-    var repoAddr = 'https://github.com/Neulana/douban-movie-extension';
+    var repoIssuesAddr = 'https://github.com/Neulana/douban-movie-extension/issues';
 
     // search with movie name
     function search(movieName, parentTag) {
@@ -12,6 +12,7 @@
             });
             port.onMessage.addListener(function (msg) {
                 var url = msg.url;
+                var neetLinks = msg.neetLinks;
                 if (!msg.success) {
                     dict[url].found = false;
                     return;
@@ -20,6 +21,8 @@
                 var task;
                 while (dict[url].tasks.length > 0) {
                     task = dict[url].tasks.pop();
+                    console.log('url:====' + url);
+                    console.log('neetLinks:====' + neetLinks);
                     var panel = getLinkStyle(neetLinks);
                     task.parentTag.insertBefore(panel, task.parentTag.childNodes[0]);
                 }
@@ -47,15 +50,15 @@
     function getLinkStyle(neetLinks) {
         var neetsDiv = document.createElement('div');
         var neetsH2 = document.createElement('h2');
-        var starMe = document.createElement('a');
+        var feedBack = document.createElement('a');
         neetsDiv.setAttribute('class', 'gray_ad');
-        neetsH2.innerText = '豆瓣电影传送门&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·'
-        starMe.setAttribute('href', repoAddr);
-        starMe.setAttribute('target', '_blank');
-        starMe.setAttribute('class', 'report-error');
-        starMe.innerText = 'StarMe!';
+        neetsH2.innerText = '豆瓣电影传送门  · · · · · ·'
+        feedBack.setAttribute('href', repoIssuesAddr);
+        feedBack.setAttribute('target', '_blank');
+        feedBack.setAttribute('class', 'report-error');
+        feedBack.innerText = '反馈';
         neetsDiv.appendChild(neetsH2);
-        neetsDiv.appendChild(starMe);
+        neetsDiv.appendChild(feedBack);
         var neetsUl = document.createElement('ul');
         neetsUl.setAttribute('class', 'bs');
         for (var i = 0; i < neetLinks.length; i++) {

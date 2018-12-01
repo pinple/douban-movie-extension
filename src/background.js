@@ -17,8 +17,8 @@ chrome.runtime.onConnect.addListener(function (port) {
                     if (resoures) {
                         msg.neetLinks = [];
                         for (var i = 0; i < resoures.length; i++) {
-                            var movieTitle = resoures[i].getElementsByClassName('tit')[0].nodeValue;
-                            var movieUrl = resoures[i].getElementsByClassName('themes_a')[0].nodeValue;
+                            var movieTitle = resoures[i].getElementsByTagName('a')[0].innerText.replace(' ', '');
+                            var movieUrl = resoures[i].getElementsByTagName('a')[1].innerText;
                             console.log('movieTitle: ' + movieTitle);
                             console.log('movieUrl: ' + movieUrl);
                             msg.neetLinks.push([movieTitle, movieUrl]);
