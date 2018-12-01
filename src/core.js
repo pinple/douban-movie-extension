@@ -23,31 +23,31 @@
                     task = dict[url].tasks.pop();
                     console.log('url:====' + url);
                     console.log('neetLinks:====' + neetLinks);
-                    var panel = getLinkStyle(neetLinks);
+                    var panel = getPanel(url, neetLinks);
                     task.parentTag.insertBefore(panel, task.parentTag.childNodes[0]);
                 }
             });
         }
-        var url = 'https://neets.cc/search?page-size=6&type=2&key=' + movieName;
+        var url = 'https://smartapi.neets.cc/full-texts/grab-datas?pageNo=1&pageSize=10&seriesSize=9&themeSize=3&key=' + movieName;
         if (!dict[url]) {
             dict[url] = {
                 tasks: []
             };
         }
         if (dict[url].found) {
-            // var panel = getLinkStyle(url);
+            // var panel = getPanel(url);
             // parentTag.appendChild(panel);
         } else if (dict[url].found == undefined) {
             dict[url].tasks.push({
                 parentTag: parentTag
-            })
+            });
             port.postMessage({
                 url: url
             });
         }
     }
 
-    function getLinkStyle(neetLinks) {
+    function getPanel(rawUrl, neetLinks) {
         var neetsDiv = document.createElement('div');
         var neetsH2 = document.createElement('h2');
         var feedBack = document.createElement('a');
@@ -64,14 +64,24 @@
         for (var i = 0; i < neetLinks.length; i++) {
             var neetsLi = document.createElement('li');
             var neetsMovie = document.createElement('a');
-            neetsMovie.setAttribute('href', neetLinks[i][1]);
+            var neetsSpan = document.createElement('span');
+            var auxiliaryInfo = neetLinks[i][1];
+            neetsMovie.setAttribute('href', neetLinks[i][2]);
             neetsMovie.setAttribute('target', '_blank');
             neetsMovie.setAttribute('class', 'playBtn');
             neetsMovie.innerHTML = neetLinks[i][0];
+            neetsSpan.setAttribute('class', 'buylink-price');
+            auxiliaryInfo = auxiliaryInfo.replace(' ', '');
+            if (auxiliaryInfo) {
+                neetsSpan.innerHTML = auxiliaryInfo;
+            } else {
+                neetsSpan.innerHTML = '免费';
+            }
             neetsLi.appendChild(neetsMovie);
+            neetsLi.appendChild(neetsSpan);
             neetsUl.appendChild(neetsLi);
+            neetsDiv.appendChild(neetsUl);
         }
-        neetsDiv.appendChild(neetsUl);
         return neetsDiv;
     }
 
@@ -104,6 +114,44 @@
         }
     }
 
+    function insertCss() {
+        // insert css
+        var style = document.createElement('style');
+        // webkit hack
+        style.appendChild(document.createTextNode(''));
+        // insert to head
+        document.head.appendChild(style);
+
+        // rules
+        var rules = {
+            '.buylink-price': {
+                left: '130px',
+                position: 'absolute',
+                color: '#999'
+            },
+            '.gray_ad .report-error': {
+                color: '#999',
+                display: 'none',
+                position: 'absolute',
+                top: '10px',
+                right: '10px',
+                background: 'transparent'
+            },
+            '.gray_ad .report-error:hover': {
+                display: 'inline'
+            }
+        };
+        for (var ele in rules) {
+            var rulesStr = ele + '{';
+            for (var attr in rules[ele]) {
+                rulesStr += attr + ': ' + rules[ele][attr] + ';';
+            }
+            rulesStr += '} ';
+            style.sheet.insertRule(rulesStr, 0);
+        }
+    }
+
+    insertCss();
     var host = window.location.hostname;
     if (host === 'movie.douban.com') {
         runDouban();

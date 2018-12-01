@@ -9,19 +9,26 @@ chrome.runtime.onConnect.addListener(function (port) {
             }
             var xhr = new XMLHttpRequest();
             xhr.onload = function () {
-                console.log(xhr);
+                console.log('xhr: ' + xhr);
                 if (xhr.status == 200) {
-                    var dom = document.createElement('html');
-                    dom.innerHTML = xhr.responseText;
-                    var resoures = dom.getElementsByClassName('themes_list_cen_li2');
-                    if (resoures) {
+                    var resp = JSON.parse(xhr.responseText);
+                    // console.log('resp: ' + resp);
+                    var resoures = resp['list'];
+                    console.log('resoures: ' + resoures)
+                    if (resoures && resoures[0]) {
                         msg.neetLinks = [];
+                        console.log('resp 1');
                         for (var i = 0; i < resoures.length; i++) {
-                            var movieTitle = resoures[i].getElementsByTagName('a')[0].innerText.replace(' ', '');
-                            var movieUrl = resoures[i].getElementsByTagName('a')[1].innerText;
-                            console.log('movieTitle: ' + movieTitle);
-                            console.log('movieUrl: ' + movieUrl);
-                            msg.neetLinks.push([movieTitle, movieUrl]);
+                            var themes = resoures[i]['themes'];
+                            if (themes && themes[0]) {
+                                console.log('resp 2');
+                                var domainName = themes[0]['domainName'];
+                                // var themeName = resoures[i]['themeName'];
+                                var auxiliaryInfo = themes[0]['auxiliaryInfo'];
+                                var videoUrl =  themes[0]['videoUrl'];
+                                console.log('themes: ' + domainName + ' ' + auxiliaryInfo+ ' ' + videoUrl);
+                                msg.neetLinks.push([domainName, auxiliaryInfo, videoUrl]);
+                            }
                         }
                         msg.success = true;
                         port.postMessage(msg);

@@ -2,7 +2,7 @@
     "manifest_version": 2,
 
     "name": "豆瓣电影传送门",
-    "description": "丰富豆瓣电影播放源列表",
+    "description": "妈妈再也不会担心我找不到资源了~",
     "version": "0.1",
     "homepage_url": "https://github.com/Neulana/douban-movie-extension",
     "icons": {
@@ -17,7 +17,7 @@
         "run_at": "document_end"
     }],
     "permissions": [
-        "https://neets.cc/*"
+        "https://*.neets.cc/*"
     ],
     "background": {
         "scripts": ["background.js"],
