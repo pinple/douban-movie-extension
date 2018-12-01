@@ -8,7 +8,7 @@
 
 如图，在豆瓣电影页面的右边栏增加”豆瓣电影传送门“模块：
 
-![demo](/Users/fupinyou/Documents/GithubLocal/douban-movie-extension/imgs/demo.jpg)
+![demo](./imgs/demo.jpg)
 
 # 如何使用
 
