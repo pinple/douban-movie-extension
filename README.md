@@ -1,4 +1,4 @@
-![douban](./imgs/douban.jpg)
+<p align="center"><img src="./imgs/douban.jpg" alt=""></p>
 
 # 豆瓣电影传送门
 
@@ -31,4 +31,4 @@
 
 如果使用过程中发现问题，请提 [issue](https://github.com/Neulana/douban-movie-extension/issues)
 
-欢迎 **fork & star**
+欢迎 **fork & star** 
