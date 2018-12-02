@@ -32,3 +32,8 @@
 如果使用过程中发现问题，请提 [issue](https://github.com/Neulana/douban-movie-extension/issues)
 
 欢迎 **fork & star** 
+
+**Windows电脑上无法使用插件的问题**
+
+已解决，请参考：https://github.com/Neulana/douban-movie-extension/issues/1
+
