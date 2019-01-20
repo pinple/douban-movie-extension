@@ -18,7 +18,6 @@ chrome.runtime.onConnect.addListener(function (port) {
                             var themes = resoures[i]['themes'];
                             if (themes && themes[0]) {
                                 var domainName = themes[0]['domainName'];
-                                // var themeName = resoures[i]['themeName'];
                                 var auxiliaryInfo = themes[0]['auxiliaryInfo'];
                                 var videoUrl =  themes[0]['videoUrl'];
                                 msg.neetLinks.push([domainName, auxiliaryInfo, videoUrl]);

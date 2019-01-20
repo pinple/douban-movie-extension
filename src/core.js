@@ -28,7 +28,7 @@
                 }
             });
         }
-        var url = 'https://smartapi.neets.cc/full-texts/grab-datas?pageNo=1&pageSize=10&seriesSize=9&themeSize=3&key=' + movieName;
+        var url = 'https://smartapi.neets.cc/full-texts/grab-datas?pageNo=1&pageSize=15&seriesSize=9&themeSize=3&key=' + movieName;
         if (!dict[url]) {
             dict[url] = {
                 tasks: []
@@ -48,6 +48,7 @@
     }
 
     function getPanel(rawUrl, neetLinks) {
+        var exclude_sites = ["acfun.cn", "bilibili.com"];  //避免抓取到同名剪辑短片
         var neetsDiv = document.createElement('div');
         var neetsH2 = document.createElement('h2');
         var feedBack = document.createElement('a');
@@ -62,11 +63,22 @@
         var neetsUl = document.createElement('ul');
         neetsUl.setAttribute('class', 'bs');
         for (var i = 0; i < neetLinks.length; i++) {
+            var href_url = neetLinks[i][2];
+            var exclude_mark = false;  //用来跳出本轮循环
+            for (var j = 0; j < exclude_sites.length; j++){
+                if (href_url.indexOf(exclude_sites[j]) != -1) {
+                    console.log("url: " + href_url);
+                    exclude_mark = true;
+                }
+            }
+            if (exclude_mark == true) {
+                continue;
+            }
             var neetsLi = document.createElement('li');
             var neetsMovie = document.createElement('a');
             var neetsSpan = document.createElement('span');
             var auxiliaryInfo = neetLinks[i][1];
-            neetsMovie.setAttribute('href', neetLinks[i][2]);
+            neetsMovie.setAttribute('href', href_url);
             neetsMovie.setAttribute('target', '_blank');
             neetsMovie.setAttribute('class', 'playBtn');
             neetsMovie.innerHTML = neetLinks[i][0];
