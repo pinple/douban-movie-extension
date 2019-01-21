@@ -37,3 +37,8 @@
 
 已解决，请参考：https://github.com/Neulana/douban-movie-extension/issues/1
 
+# 更新日志
+
+**v1.2**
+剔除AcFun和哔哩哔哩网站来源，因为这些网站常有电影剪辑视频，而非正片，这不是我想要的；
+列表默认展示的来源条目数量增加至15条。
