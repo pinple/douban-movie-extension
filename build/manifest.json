@@ -3,7 +3,7 @@
 
     "name": "豆瓣电影传送门",
     "description": "妈妈再也不会担心我找不到资源了~",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "homepage_url": "https://github.com/Neulana/douban-movie-extension",
     "icons": {
         "32": "favicon-32.png",
