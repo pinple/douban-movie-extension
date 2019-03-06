@@ -12,7 +12,13 @@
 
 # 如何使用
 
-由于在Chrome商店发布需要境外银行卡支付，所以我就不在Chrome商店发布啦（其实是因为穷...），这里提供离线版本下载。
+提供两种下载方式。
+
+方式一，Chrome官方商店：
+
+需要翻墙，直接前往 [Chrome商店](https://chrome.google.com/webstore/detail/豆瓣电影传送门/pkidecliagangmpphpelecaoogfbnihi ) 下载；
+
+方式二，手动安装：
 
 1. 点击[download文件夹](https://github.com/Neulana/douban-movie-extension/tree/master/download)下载最新版本到本地；
 2. 打开Chrome，在地址栏输入chrome://extensions/，回车；
@@ -25,15 +31,17 @@
 
 # 感谢
 
-非常感谢 [Ovilia](https://github.com/Ovilia/readfree-chrome-extension)
+- 灵感来自 [Ovilia](https://github.com/Ovilia/readfree-chrome-extension) ；
+- 感谢 [zhaopengme](https://github.com/zhaopengme) 帮忙发布到Chrome商店。
+
 
 # 反馈
 
-如果使用过程中发现问题，请提 [issue](https://github.com/Neulana/douban-movie-extension/issues)
+如果使用过程中发现问题，请提 [issue](https://github.com/Neulana/douban-movie-extension/issues) 
 
 欢迎 **fork & star** 
 
-**Windows电脑上无法使用插件的问题**
+1. **Windows电脑上手动安装报错** 
 
 已解决，请参考：https://github.com/Neulana/douban-movie-extension/issues/1
 
